@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,10 +82,12 @@ public class CharAnimation : MonoBehaviour
 
     public void KnockDown()
     {
+        // Debug.Log(AnimationTags.KNOCK_DOWN_TRIGGER);
         anim.SetTrigger(AnimationTags.KNOCK_DOWN_TRIGGER);
     }
     public void StandUp()
     {
+        // Debug.Log(AnimationTags.STAND_UP_TRIGGER);
         anim.SetTrigger(AnimationTags.STAND_UP_TRIGGER);
     }
     public void Hit()

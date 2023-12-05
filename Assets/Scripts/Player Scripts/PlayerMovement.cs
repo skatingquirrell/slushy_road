@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float walkSpd = 3f;
     public float zSpd = 1.5f;
+    public bool is2DPrefab;
 
     private readonly float rotationY = -90f;
     // private float rotationSpd = 15f;
@@ -48,13 +49,27 @@ public class PlayerMovement : MonoBehaviour
 
     void RotatePlayer()
     {
-        if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) > 0)
+        if(is2DPrefab)
         {
-            transform.rotation = Quaternion.Euler(0f, -Mathf.Abs(rotationY), 0f);
+            if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) > 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+            else if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) < 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            }
         }
-        else if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) < 0)
+        else
         {
-            transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotationY), 0f);
+            if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) > 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, -Mathf.Abs(rotationY), 0f);
+            }
+            else if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) < 0)
+            {
+                transform.rotation = Quaternion.Euler(0f, Mathf.Abs(rotationY), 0f);
+            }
         }
     }
 

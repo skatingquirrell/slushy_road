@@ -16,7 +16,7 @@ public class CharacterAnimDelegate : MonoBehaviour
         shakeCamera = GameObject.FindWithTag(Tags.MAIN_CAMERA_TAG).GetComponent<ShakeCamera>();
         animScript = GetComponent<CharAnimation>();
         audioSource = GetComponent<AudioSource>();
-        if(gameObject.CompareTag(Tags.ENEMY_TAG))
+        if (gameObject.CompareTag(Tags.ENEMY_TAG))
         {
             enemyMovement = GetComponentInParent<EnemyMovement>();
         }
@@ -72,7 +72,7 @@ public class CharacterAnimDelegate : MonoBehaviour
             leftLegAtkPt.SetActive(false);
         }
     }
-    
+
     void TagLeftArm()
     {
         leftArmAtkPt.tag = Tags.LEFT_ARM_TAG;
@@ -82,7 +82,7 @@ public class CharacterAnimDelegate : MonoBehaviour
     {
         leftArmAtkPt.tag = Tags.UNTAGGED_TAG;
     }
-    
+
     void TagLeftLeg()
     {
         leftLegAtkPt.tag = Tags.LEFT_LEG_TAG;
@@ -134,14 +134,14 @@ public class CharacterAnimDelegate : MonoBehaviour
 
     void DisableMovement()
     {
-        print("Disable Movement");
+        // print("Disable Movement");
         enemyMovement.enabled = false;
         //set the enemy parent to default layer to avoid being continuously hit
         transform.parent.gameObject.layer = LayerMask.NameToLayer("Default");
     }
     void EnableMovement()
     {
-        print("Enable Movement");
+        // print("Enable Movement");
         enemyMovement.enabled = true;
         //set the enemy parent to enemy layer to reactivate hit detection
         transform.parent.gameObject.layer = LayerMask.NameToLayer("Enemy");
@@ -153,16 +153,27 @@ public class CharacterAnimDelegate : MonoBehaviour
     }
     void CharacterDied()
     {
+        //trigger game over        
+        if (transform.parent.CompareTag(Tags.PLAYER_TAG))
+        {
+            FindAnyObjectByType<GameManager>().EndGame();
+            return;
+        }
         Invoke("DeactivateGameObj", 2f);
     }
     void DeactivateGameObj()
-    {        
-        gameObject.SetActive(false);        
-        foreach(GameObject enemyObj in GameObject.FindGameObjectsWithTag(Tags.ENEMY_TAG))
+    {
+        // gameObject.SetActive(false);
+        foreach (GameObject enemyObj in GameObject.FindGameObjectsWithTag(Tags.ENEMY_TAG))
         {
-            enemyObj.SetActive(false);
+            if((enemyObj.GetComponent<HealthScript>() != null) && 
+            enemyObj.GetComponent<HealthScript>().health <= 0f)
+            {
+                EnemyManager.instance.DestroyEnemy(enemyObj);
+            }
+            // enemyObj.SetActive(false);
         }
-
-        EnemyManager.instance.SpawnEnemy();
+        //Spawn new enemy after one died
+        EnemyManager.instance.GetEnemyInstance();
     }
 }

@@ -68,9 +68,10 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Revive as a new character for reusing character instance
+    public void Revive()
     {
+        charDied = false;
         
     }
 }

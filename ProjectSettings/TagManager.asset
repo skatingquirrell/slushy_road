@@ -8,6 +8,7 @@ TagManager:
   - LeftLeg
   - Enemy
   - HealthUI
+  - Ground
   layers:
   - Default
   - TransparentFX

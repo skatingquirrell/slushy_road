@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackUniversal : MonoBehaviour
 {
+    public SFXObjectPool hitSFXObjectPool;
     public LayerMask collisionLayer;
     public float radius = 1f;
     public float damage = 2f;
@@ -12,9 +13,9 @@ public class AttackUniversal : MonoBehaviour
     public GameObject hitFXPrefab;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        hitSFXObjectPool = FindAnyObjectByType<SFXObjectPool>();
     }
 
     // Update is called once per frame
@@ -32,16 +33,7 @@ public class AttackUniversal : MonoBehaviour
             {
                 Vector3 hitFXPos = hit[0].transform.position;
                 hitFXPos.y += 1.3f;
-                // print("hit[0] transform forward vector" + hit[0].transform.forward);
-                // if(hit[0].transform.forward.x > 0)
-                // {
-                //     hitFXPos.x += 0.3f;
-                // }
-                // else if(hit[0].transform.forward.x < 0)
-                // {
-                //     hitFXPos.x -= 0.3f;
-                // }
-                Instantiate(hitFXPrefab, hitFXPos, Quaternion.identity);
+                hitSFXObjectPool.GetSFXInstance(hitFXPos, Quaternion.identity);
 
                 if (gameObject.CompareTag(Tags.LEFT_ARM_TAG) ||
                     gameObject.CompareTag(Tags.LEFT_LEG_TAG))

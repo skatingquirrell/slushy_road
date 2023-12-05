@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -97,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -150,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -173,7 +170,7 @@ GameObject:
   - component: {fileID: 6892106600720676058}
   - component: {fileID: 273127166837775491}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: EnemyA
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bd2dfab54f5444f85f5d8f1dab1546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 100
   isPlayer: 0
 --- !u!1 &7284870135214733528
 GameObject:
@@ -317,7 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 512

@@ -105,7 +105,7 @@ public class PlayerAttack : MonoBehaviour
             }
 
             if (currentComboState == ComboState.KICK_2)
-            {
+            {   
                 playerAnim.Kick2();
             }
         }
