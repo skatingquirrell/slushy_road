@@ -358,8 +358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e47c6998a8a46f0b16c6a0b5d737a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionalLight: {fileID: 705507994}
-  environmentObject: {fileID: 657732718}
 --- !u!4 &471946017
 Transform:
   m_ObjectHideFlags: 0
@@ -463,24 +461,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4336068202089366, guid: 70b58defb3bca4125b1b6d4b1359cee3, type: 3}
   m_PrefabInstance: {fileID: 1362882960}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &654502278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7892723546885738356, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
-  m_PrefabInstance: {fileID: 7400866974093268503}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &654502286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654502278}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e4560f5a58c430b93beb6f33e09cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnim: {fileID: 0}
 --- !u!4 &654502293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6182565114442521079, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
@@ -537,11 +517,6 @@ MonoBehaviour:
   maxPreSpawnEnemies: 5
   enemyPrefab: {fileID: 4056035005725577568, guid: bc80f0489286b4adca83901db910d7ab, type: 3}
   maxEnemyCount: 5
---- !u!1 &657732718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1307690998039848, guid: 70b58defb3bca4125b1b6d4b1359cee3, type: 3}
-  m_PrefabInstance: {fileID: 1362882960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,10 +1628,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3736732554167942282, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6182565114442521079, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9
@@ -1701,17 +1672,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8489378988796621358, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
-      propertyPath: health
-      value: 99999
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7892723546885738356, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654502286}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

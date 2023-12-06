@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public static class SceneNames
     public const string PauseMenuScene = "PauseMenuScene";
     public const string Options = "OptionsScene";
     public const string LevelClearMenuScene = "LevelClearMenuScene";
+    public const string CharacterSelectScene = "CharacterSelectScene";
     // Add more scenes as needed
 }
 
@@ -77,6 +79,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("LEVEL RESTARTED");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void CharacterSelectScene()
+    {
+        SceneManager.LoadScene(SceneNames.CharacterSelectScene);
     }
 
     public void LevelClear()

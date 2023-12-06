@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -148,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -200,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce14c07b9afb2467f89855fc0d90c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSFXObjectPool: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -310,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpd: 3
   zSpd: 1.5
+  is2DPrefab: 0
 --- !u!114 &3736732554167942282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bd2dfab54f5444f85f5d8f1dab1546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 99999
   isPlayer: 1
 --- !u!114 &505519012534283856
 MonoBehaviour:

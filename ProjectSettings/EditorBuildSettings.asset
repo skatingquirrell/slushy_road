@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelClearMenuScene.unity
     guid: f9da1e9037cf144c0b450c25f8fcde61
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelectScene.unity
+    guid: 296dce794755e4e268e6113b4b022d6f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void NewGame()
     {
-        GameManager.Instance.InitializeGame();
+        GameManager.Instance.CharacterSelectScene();
     }
 
     public void QuitGame()
