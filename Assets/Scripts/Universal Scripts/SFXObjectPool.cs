@@ -8,17 +8,6 @@ public class SFXObjectPool : MonoBehaviour
 
     private Queue<GameObject> sfxPool = new Queue<GameObject>(); // Queue to store SFX instances
 
-    // private void Start()
-    // {
-    //     // Initialize the object pool
-    //     for (int i = 0; i < maxPoolSize; i++)
-    //     {
-    //         GameObject sfxInstance = InstantiateSFX();
-    //         sfxInstance.SetActive(false);
-    //         sfxPool.Enqueue(sfxInstance);
-    //     }
-    // }
-
     public GameObject GetSFXInstance(Vector3 position, Quaternion rotation)
     {
         if (sfxPool.Count == 0)
