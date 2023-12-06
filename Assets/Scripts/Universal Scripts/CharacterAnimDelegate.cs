@@ -156,7 +156,7 @@ public class CharacterAnimDelegate : MonoBehaviour
         //trigger game over        
         if (transform.parent.CompareTag(Tags.PLAYER_TAG))
         {
-            FindAnyObjectByType<GameManager>().EndGame();
+            GameManager.Instance.EndGame();
             return;
         }
         Invoke("DeactivateGameObj", 2f);

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-   public Transform player; // Reference to the player's transform
+    private const float ZPositionRadiusRange = -1.5f;
+    public Transform player; // Reference to the player's transform
     public Camera mainCamera; // Reference to the main camera
     public float xOffset = 1f; // Horizontal offset between the enemy manager and the game view
     private float leftBound; // Left boundary of the game view
@@ -16,12 +17,12 @@ public class EnemyManager : MonoBehaviour
     // private readonly int enemyMaxCnt = 10;
 
 
-    private int currentEnemies = 0; // Current number of spawned enemies
+    private int killedEnemies = 0; // Current number of spawned enemies
     public int maxEnemies = 5; // Maximum number of enemies to spawn
     public int maxPreSpawnEnemies = 5; // Maximum number of enemies to spawn in the beginning of the game
     public GameObject enemyPrefab; // Prefab of the enemy
     public int maxEnemyCount = 10; // Maximum number of alive enemies 
-    private float enemyHealth; 
+    private float enemyHealth;
 
     private Queue<GameObject> enemyPool = new Queue<GameObject>(); // Queue to store enemy instances
     private List<GameObject> activeEnemies = new List<GameObject>(); // List to store active enemies
@@ -45,12 +46,13 @@ public class EnemyManager : MonoBehaviour
         for (int i = 0; i < maxPreSpawnEnemies; i++)
         {
             float randomX = Random.Range(leftBound + xOffset, rightBarrier - xOffset);
-            Vector3 spawnPosition = new Vector3(randomX, player.position.y, player.position.z);
-            RandomizeEnemyColor(Instantiate(enemyPrefab, spawnPosition, Quaternion.identity));            
+            float randomZ = player.position.z + Random.Range(-Mathf.Abs(ZPositionRadiusRange), Mathf.Abs(ZPositionRadiusRange));
+            Vector3 spawnPosition = new Vector3(randomX, player.position.y, randomZ);
+            RandomizeEnemyColor(Instantiate(enemyPrefab, spawnPosition, Quaternion.identity));
             // currentEnemies++;
         }
     }
-    
+
     private void LateUpdate()
     {
         // Move the enemy manager horizontally to always be slightly out of the game view on the right side
@@ -63,7 +65,7 @@ public class EnemyManager : MonoBehaviour
         transform.position += (player.position - transform.position) * Time.deltaTime;
 
         // Check if we can spawn more enemies
-        if (currentEnemies < maxEnemies)
+        if (killedEnemies < maxEnemies)
         {
             // Check if the player has moved to the right side of the screen
             if (player.position.x < leftBound)
@@ -77,11 +79,11 @@ public class EnemyManager : MonoBehaviour
         else
         {
             // LEVEL CLEAR
-            Debug.Log("YOU WIN!");
+            GameManager.Instance.LevelClear();
         }
     }
 
-    public GameObject  GetEnemyInstance()
+    public GameObject GetEnemyInstance()
     {
         if (enemyPool.Count == 0)
         {
@@ -101,8 +103,8 @@ public class EnemyManager : MonoBehaviour
         activeEnemies.Add(newEnemy);
 
         // Increase the count of spawned enemies
-        currentEnemies++;
-        Debug.Log("KILLED ENEMIES SO FAR: " + currentEnemies);
+        killedEnemies++;
+        Debug.Log("GOT ENEMIES SO FAR: " + killedEnemies);
 
         return newEnemy;
     }
@@ -150,7 +152,7 @@ public class EnemyManager : MonoBehaviour
 
     private Color GetRandomColor()
     {
-            return new Color(Random.value, Random.value, Random.value);
+        return new Color(Random.value, Random.value, Random.value);
     }
 
     void Awake()
@@ -160,7 +162,7 @@ public class EnemyManager : MonoBehaviour
             instance = this;
         }
         // enemyList = new List<GameObject>();
-        mainCamera = Camera.main;        
+        mainCamera = Camera.main;
     }
 
     // public void SpawnEnemy()
