@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneGenerator : MonoBehaviour
 {
+    public GameObject characterPrefab; 
     private const string SceneName = "StreetScene";
     private const string DirectionalLight = "Directional Light";
     private const string EnvironmentObject = "Environment";
@@ -36,13 +37,16 @@ public class SceneGenerator : MonoBehaviour
         // Get the newly loaded scene
         Scene streetScene = SceneManager.GetSceneByName(SceneName);
         if (streetScene.isLoaded)
-        {
+        {            
+            SwitchCharacter(GameManager.characterName);
             RandomizeStreetSceneAppearance(streetScene);
             finishedRandomizingScene = true;
         }
     }
     public void NewRandomScene()
     {
+        Debug.Log("Game character: " + GameManager.characterName);
+
         // Load the StreetScene and set it as the active scene
         SceneManager.LoadScene(SceneName);
         Debug.Log("Loaded new game scene.");
@@ -80,6 +84,83 @@ public class SceneGenerator : MonoBehaviour
             {
                 material.color = Random.ColorHSV();
             }
+        }
+    }
+
+    private void SwitchCharacter(string characterName)
+    {
+        if(characterName == null || characterName.Equals(""))
+        {
+            return;
+        }
+        // Get the new character prefab based on the selected character
+        string prefabPath = GetPrefabPath(characterName);
+        GameObject newCharacterPrefab = Resources.Load<GameObject>(prefabPath);
+
+        // Replace the existing character prefab with the new one
+        ReplaceCharacterPrefab(newCharacterPrefab);
+    }
+
+    private void ReplaceCharacterPrefab(GameObject newCharacterPrefab)
+    {
+        if (newCharacterPrefab != null && characterPrefab != null)
+        {
+            CopyMaterialSettingsFromChild(newCharacterPrefab, characterPrefab, "PlayerChild/Char");
+        }
+        else
+        {
+            Debug.LogError("Prefab not found or characterPrefab not set.");
+        }
+
+    }
+
+     void CopyMaterialSettingsFromChild(GameObject source, GameObject target, string childPath)
+    {
+        Transform sourceChild = source.transform.Find(childPath);
+        Transform targetChild = target.transform.Find(childPath);
+
+        if (sourceChild == null || targetChild == null)
+        {
+            Debug.LogWarning("Child not found in either source or target prefab.");
+            return;
+        }
+
+// Get the Material component from the source child
+        Renderer sourceRenderer = sourceChild.GetComponent<Renderer>();
+        if (sourceRenderer != null)
+        {
+            Material sourceMaterial = sourceRenderer.sharedMaterial;
+
+            // Replace the Material on the target child
+            Renderer targetRenderer = targetChild.GetComponent<Renderer>();
+            if (targetRenderer != null)
+            {
+                targetRenderer.sharedMaterial = sourceMaterial;
+            }
+            else
+            {
+                Debug.LogWarning("Renderer not found on target child.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Renderer not found on source child.");
+        }
+    }
+        
+    public static string GetPrefabPath(string characterName)
+    {
+        var characterData = CharacterConstants.CharacterList.Find(data => data.Item1 == characterName);
+
+        if (characterData != default)
+        {
+            // characterData.Item4 represents the prefab path
+            return characterData.Item4;
+        }
+        else
+        {
+            // Return null or handle the case when the character name is not found
+            return null;
         }
     }
 }

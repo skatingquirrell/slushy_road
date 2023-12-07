@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     bool gameEnded = false;
     public float restartGameDelaySec = 2f;
 
+    public static string characterName;
     private static GameManager _instance;
 
     public static GameManager Instance
@@ -37,8 +38,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void InitializeGame()
+    public void InitializeGame(string controlCharName = "")
     {
+        characterName = controlCharName;
         // Generate a new random scene
         NewRandomScene();
     }
@@ -129,5 +131,4 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-
 }

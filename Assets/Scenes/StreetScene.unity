@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e47c6998a8a46f0b16c6a0b5d737a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterPrefab: {fileID: 7400866974093268504}
 --- !u!4 &471946017
 Transform:
   m_ObjectHideFlags: 0
@@ -1447,7 +1448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2104092529
 Transform:
   m_ObjectHideFlags: 0
@@ -1475,7 +1476,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0976293b10f9146c8afa7962390e011f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1677,6 +1678,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
+--- !u!1 &7400866974093268504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7892723546885738356, guid: b451f80b44b5c4576bf218999eb91a9b, type: 3}
+  m_PrefabInstance: {fileID: 7400866974093268503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

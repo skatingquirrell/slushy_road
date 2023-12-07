@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
     // private readonly int enemyMaxCnt = 10;
 
 
-    private int killedEnemies = 0; // Current number of spawned enemies
+    private int generatedFromPoolEnemies = 0; // Current number of spawned enemies
     public int maxEnemies = 5; // Maximum number of enemies to spawn
     public int maxPreSpawnEnemies = 5; // Maximum number of enemies to spawn in the beginning of the game
     public GameObject enemyPrefab; // Prefab of the enemy
@@ -65,7 +65,7 @@ public class EnemyManager : MonoBehaviour
         transform.position += (player.position - transform.position) * Time.deltaTime;
 
         // Check if we can spawn more enemies
-        if (killedEnemies < maxEnemies)
+        if (generatedFromPoolEnemies < maxEnemies)
         {
             // Check if the player has moved to the right side of the screen
             if (player.position.x < leftBound)
@@ -103,8 +103,7 @@ public class EnemyManager : MonoBehaviour
         activeEnemies.Add(newEnemy);
 
         // Increase the count of spawned enemies
-        killedEnemies++;
-        Debug.Log("GOT ENEMIES SO FAR: " + killedEnemies);
+        generatedFromPoolEnemies++;
 
         return newEnemy;
     }
