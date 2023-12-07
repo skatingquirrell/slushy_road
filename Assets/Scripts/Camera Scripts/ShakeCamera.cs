@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShakeCamera : MonoBehaviour
@@ -24,9 +22,9 @@ public class ShakeCamera : MonoBehaviour
     }
     void Shake()
     {
-        if(shouldShake)
+        if (shouldShake)
         {
-            if(duration > 0f)
+            if (duration > 0f)
             {
                 transform.localPosition = startPos + Random.insideUnitSphere * power;
                 duration -= Time.deltaTime * slowDownAmt;
@@ -46,7 +44,8 @@ public class ShakeCamera : MonoBehaviour
         {
             return shouldShake;
         }
-        set{
+        set
+        {
             shouldShake = value;
         }
     }

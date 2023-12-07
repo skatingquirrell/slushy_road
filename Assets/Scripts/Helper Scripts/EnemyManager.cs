@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -103,6 +102,7 @@ public class EnemyManager : MonoBehaviour
         activeEnemies.Add(newEnemy);
 
         // Increase the count of spawned enemies
+        Debug.Log("GENERATED ENEMIES SO FAR: " + generatedFromPoolEnemies);
         generatedFromPoolEnemies++;
 
         return newEnemy;

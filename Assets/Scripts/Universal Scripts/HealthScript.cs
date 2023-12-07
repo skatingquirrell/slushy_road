@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthScript : MonoBehaviour
@@ -14,13 +12,13 @@ public class HealthScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Awake()
     {
         animationScript = GetComponentInChildren<CharAnimation>();
-        if(isPlayer)
+        if (isPlayer)
         {
             healthUI = GetComponent<HealthUI>();
         }
@@ -28,38 +26,38 @@ public class HealthScript : MonoBehaviour
 
     public void ApplyDamage(float damage, bool knockDown)
     {
-        if(charDied)
+        if (charDied)
         {
             return;
         }
         health -= damage;
         //display health UI
-        if(isPlayer)
+        if (isPlayer)
         {
             healthUI.DisplayHealth(health);
         }
 
-        if(health <= 0f)
+        if (health <= 0f)
         {
             animationScript.Death();
             charDied = true;
-            if(isPlayer)
+            if (isPlayer)
             {
                 GameObject.FindWithTag(Tags.ENEMY_TAG).GetComponent<EnemyMovement>().enabled = false;
             }
             return;
         }
-        if(!isPlayer)
+        if (!isPlayer)
         {
-            if(knockDown)
+            if (knockDown)
             {
-                if(Random.Range(0,2) > 0)
+                if (Random.Range(0, 2) > 0)
                 {
                     animationScript.KnockDown();
                 }
                 else
                 {
-                    if(Random.Range(0,3) > 1)
+                    if (Random.Range(0, 3) > 1)
                     {
                         animationScript.Hit();
                     }
@@ -72,6 +70,6 @@ public class HealthScript : MonoBehaviour
     public void Revive()
     {
         charDied = false;
-        
+
     }
 }

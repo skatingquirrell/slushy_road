@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackUniversal : MonoBehaviour
@@ -45,7 +43,7 @@ public class AttackUniversal : MonoBehaviour
                     hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
                 }
             }
-            if(isEnemy)
+            if (isEnemy)
             {
                 hit[0].GetComponent<HealthScript>().ApplyDamage(damage, false);
             }

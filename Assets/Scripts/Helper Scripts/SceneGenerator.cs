@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.SceneManagement;
 
 public class SceneGenerator : MonoBehaviour
 {
-    public GameObject characterPrefab; 
+    public GameObject characterPrefab;
     private const string SceneName = "StreetScene";
     private const string DirectionalLight = "Directional Light";
     private const string EnvironmentObject = "Environment";
@@ -37,7 +36,7 @@ public class SceneGenerator : MonoBehaviour
         // Get the newly loaded scene
         Scene streetScene = SceneManager.GetSceneByName(SceneName);
         if (streetScene.isLoaded)
-        {            
+        {
             SwitchCharacter(GameManager.characterName);
             RandomizeStreetSceneAppearance(streetScene);
             finishedRandomizingScene = true;
@@ -89,7 +88,7 @@ public class SceneGenerator : MonoBehaviour
 
     private void SwitchCharacter(string characterName)
     {
-        if(characterName == null || characterName.Equals(""))
+        if (characterName == null || characterName.Equals(""))
         {
             return;
         }
@@ -114,7 +113,7 @@ public class SceneGenerator : MonoBehaviour
 
     }
 
-     void CopyMaterialSettingsFromChild(GameObject source, GameObject target, string childPath)
+    void CopyMaterialSettingsFromChild(GameObject source, GameObject target, string childPath)
     {
         Transform sourceChild = source.transform.Find(childPath);
         Transform targetChild = target.transform.Find(childPath);
@@ -125,7 +124,7 @@ public class SceneGenerator : MonoBehaviour
             return;
         }
 
-// Get the Material component from the source child
+        // Get the Material component from the source child
         Renderer sourceRenderer = sourceChild.GetComponent<Renderer>();
         if (sourceRenderer != null)
         {
@@ -147,7 +146,7 @@ public class SceneGenerator : MonoBehaviour
             Debug.LogWarning("Renderer not found on source child.");
         }
     }
-        
+
     public static string GetPrefabPath(string characterName)
     {
         var characterData = CharacterConstants.CharacterList.Find(data => data.Item1 == characterName);

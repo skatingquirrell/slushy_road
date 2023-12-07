@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -49,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     void RotatePlayer()
     {
-        if(is2DPrefab)
+        if (is2DPrefab)
         {
             if (Input.GetAxisRaw(Axis.HORIZONTAL_AXIS) > 0)
             {

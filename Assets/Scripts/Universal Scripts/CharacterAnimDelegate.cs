@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAnimDelegate : MonoBehaviour
@@ -166,7 +165,7 @@ public class CharacterAnimDelegate : MonoBehaviour
         // gameObject.SetActive(false);
         foreach (GameObject enemyObj in GameObject.FindGameObjectsWithTag(Tags.ENEMY_TAG))
         {
-            if((enemyObj.GetComponent<HealthScript>() != null) && 
+            if ((enemyObj.GetComponent<HealthScript>() != null) &&
             enemyObj.GetComponent<HealthScript>().health <= 0f)
             {
                 EnemyManager.instance.DestroyEnemy(enemyObj);

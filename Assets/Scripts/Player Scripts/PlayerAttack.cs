@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum ComboState
@@ -105,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
             }
 
             if (currentComboState == ComboState.KICK_2)
-            {   
+            {
                 playerAnim.Kick2();
             }
         }

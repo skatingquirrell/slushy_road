@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +22,6 @@ public class PauseMenu : MonoBehaviour
     public void OnMenuButtonClick()
     {
         GameManager.Instance.TogglePause();
-        SceneManager.LoadScene(SceneNames.MenuScene); 
+        SceneManager.LoadScene(SceneNames.MenuScene);
     }
 }
