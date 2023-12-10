@@ -25,7 +25,8 @@ Slushy Roadへようこそ。これは、ストレスを解消するエキサイ
 
 ## デモ
 
-ゲームの簡単なデモを[YouTube](https://youtu.be/Obv3aLT099E)でご覧いただけます。
+ゲームの簡単なデモ
+![Video](https://github.com/skatingquirrell/slushy_road/blob/develop/GifFiles/FullGameDemo.mov)
 
 
 
