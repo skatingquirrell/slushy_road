@@ -172,7 +172,5 @@ public class CharacterAnimDelegate : MonoBehaviour
             }
             // enemyObj.SetActive(false);
         }
-        //Spawn new enemy after one died
-        EnemyManager.instance.GetEnemyInstance();
     }
 }

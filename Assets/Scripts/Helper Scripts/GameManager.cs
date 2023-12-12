@@ -9,13 +9,13 @@ public static class SceneNames
     public const string Options = "OptionsScene";
     public const string LevelClearMenuScene = "LevelClearMenuScene";
     public const string CharacterSelectScene = "CharacterSelectScene";
-    // Add more scenes as needed
 }
 
 public class GameManager : MonoBehaviour
 {
     bool gameEnded = false;
     public float restartGameDelaySec = 2f;
+    public int killedEnemy = 0;
 
     public static string characterName;
     private static GameManager _instance;
@@ -128,6 +128,23 @@ public class GameManager : MonoBehaviour
             SceneManager.UnloadSceneAsync(SceneNames.PauseMenuScene);
             // Resume time to continue the game
             Time.timeScale = 1f;
+        }
+    }
+
+     public void EnemyKilled()
+    {
+        killedEnemy++;
+        Debug.Log("Killed Enemies Count: " + killedEnemy);
+        if(killedEnemy == EnemyManager.instance.KilledEnemyQuota)
+        {
+                // LEVEL CLEAR
+            GameManager.Instance.LevelClear();
+        }
+        else if( EnemyManager.instance.GeneratedFromPoolEnemies
+                 < EnemyManager.instance.maxEnemies)
+        {
+            //Spawn new enemy after one died
+            EnemyManager.instance.GetEnemyInstance();
         }
     }
 }

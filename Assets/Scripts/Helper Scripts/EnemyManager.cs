@@ -12,19 +12,20 @@ public class EnemyManager : MonoBehaviour
 
     private float rightBarrier; // The enemy should be spawn in front of the barrier
     public static EnemyManager instance;
-    // private List<GameObject> enemyList;
-    // private readonly int enemyMaxCnt = 10;
 
 
     private int generatedFromPoolEnemies = 0; // Current number of spawned enemies
     public int maxEnemies = 5; // Maximum number of enemies to spawn
     public int maxPreSpawnEnemies = 5; // Maximum number of enemies to spawn in the beginning of the game
     public GameObject enemyPrefab; // Prefab of the enemy
-    public int maxEnemyCount = 10; // Maximum number of alive enemies 
+    private int killedEnemyQuota; // number of enemy needed to kill to clear the level
     private float enemyHealth;
 
     private Queue<GameObject> enemyPool = new Queue<GameObject>(); // Queue to store enemy instances
     private List<GameObject> activeEnemies = new List<GameObject>(); // List to store active enemies
+
+    public int KilledEnemyQuota { get => killedEnemyQuota; set => killedEnemyQuota = value; }
+    public int GeneratedFromPoolEnemies { get => generatedFromPoolEnemies; set => generatedFromPoolEnemies = value; }
 
     private void Start()
     {
@@ -50,6 +51,8 @@ public class EnemyManager : MonoBehaviour
             RandomizeEnemyColor(Instantiate(enemyPrefab, spawnPosition, Quaternion.identity));
             // currentEnemies++;
         }
+
+        killedEnemyQuota = maxPreSpawnEnemies + maxEnemies;
     }
 
     private void LateUpdate()
@@ -64,7 +67,7 @@ public class EnemyManager : MonoBehaviour
         transform.position += (player.position - transform.position) * Time.deltaTime;
 
         // Check if we can spawn more enemies
-        if (generatedFromPoolEnemies < maxEnemies)
+        if (GeneratedFromPoolEnemies < maxEnemies)
         {
             // Check if the player has moved to the right side of the screen
             if (player.position.x < leftBound)
@@ -72,13 +75,7 @@ public class EnemyManager : MonoBehaviour
                 // Spawn an enemy from the side of the screen
                 Vector3 spawnPosition = new Vector3(leftBound - xOffset, player.position.y, player.position.z);
                 GetEnemyInstance().transform.SetPositionAndRotation(spawnPosition, Quaternion.identity);
-                // Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             }
-        }
-        else
-        {
-            // LEVEL CLEAR
-            GameManager.Instance.LevelClear();
         }
     }
 
@@ -102,8 +99,9 @@ public class EnemyManager : MonoBehaviour
         activeEnemies.Add(newEnemy);
 
         // Increase the count of spawned enemies
-        Debug.Log("GENERATED ENEMIES SO FAR: " + generatedFromPoolEnemies);
-        generatedFromPoolEnemies++;
+        GeneratedFromPoolEnemies++;
+        Debug.Log("GENERATED ENEMIES SO FAR: "
+            + (maxPreSpawnEnemies + GeneratedFromPoolEnemies));
 
         return newEnemy;
     }
